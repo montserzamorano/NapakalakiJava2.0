@@ -57,39 +57,64 @@ public class Cards {
         p = new Prize(2,1);
         monsters.add(new Monster("H.P Munchcraft",6,bc,p));
         
-        /*Bichgooth*/
-        monsters.add(new Monster("Bichgooth",2,bc,p));
+        /*Bichgooth*/ 
         bc = new BadConsequence("Sientes bichos bajo la ropa. Descarta la"+
         "armadura visible", 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
         new ArrayList());
         p = new Prize(1,1);
+        monsters.add(new Monster("Bichgooth",2,bc,p));
+        
         /*El rey de rosa*/
         bc = new BadConsequence("Pierdes 5 niveles y 3 tesoros visibles",5,3,0);
         p = new Prize(4,2);
         monsters.add(new Monster("El rey de rosa",13,bc,p));
         
         /*La que redacta en las tinieblas*/
+        bc = new BadConsequence("Toses los pulmones y pierdes dos niveles", 
+        2,0,0);
+        p = new Prize(1,1);
         monsters.add(new Monster("La que redacta en las tinieblas",2,bc,p));
         
         /*Los hondos*/
+        bc = new BadConsequence("Estos monstruos son bastante superficiales y"+
+        " te aburren mortalmente. Estas muerto.");
+        p = new Prize(1,1);
         monsters.add(new Monster("Los hondos",8,bc,p));
         
         /*Semillas Cthulhu*/
+        bc = new BadConsequence("Pierdes dos niveles y dos tesoros ocultos", 
+        2,0,2);
+        p = new Prize(2,1);
         monsters.add(new Monster("Semillas Cthulhu",4,bc,p));
         
         /*Dameargo*/
+        bc = new BadConsequence("Te intentas escaquear. Pierdes una mano visible.",
+        0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)),
+        new ArrayList());
+        p = new Prize(2,1);
         monsters.add(new Monster("Dameargo",1,bc,p));
         
         /*Pollipolipo volante*/
+        bc = new BadConsequence("Da mucho asquito. Pierdes 3 niveles.",3,0,0);
+        p = new Prize(1,1);
         monsters.add(new Monster("Pollipolipo volante",3,bc,p));
         
         /*Yskhtihyssg-Goth*/
+        bc = new BadConsequence("No le hace gracia que pronuncien mal su " + 
+        "nombre. Estás muerto.");
+        p = new Prize(3,1);
         monsters.add(new Monster("Yskhtihyssg-Goth",12,bc,p));
         
         /*Familia feliz*/
+        bc = new BadConsequence("La familia te atrapa. Estás muerto.");
+        p = new Prize(4,1);
         monsters.add(new Monster("Familia feliz",1,bc,p));
         
         /*Roboggoth*/
+        bc = new BadConsequence("Pierdes la armadura visible",
+        2, new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)),
+        new ArrayList());
+        p = new Prize(2,1);
         monsters.add(new Monster("Roboggoth",8,bc,p));
         
         /*El espia*/
