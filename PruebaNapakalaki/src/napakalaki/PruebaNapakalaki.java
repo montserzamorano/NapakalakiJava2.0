@@ -5,6 +5,8 @@
  */
 package napakalaki;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author montse
@@ -15,7 +17,8 @@ public class PruebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ArrayList <Monster> monstruos = new ArrayList();
+        monstruos = Cards.initializeMonsters();
     }
     
 }
