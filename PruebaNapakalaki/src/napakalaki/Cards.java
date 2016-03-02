@@ -62,7 +62,7 @@ public class Cards {
         monsters.add(new Monster("H.P Munchcraft",6,bc,p));
         
         /*Bichgooth*/ 
-        bc = new BadConsequence("Sientes bichos bajo la ropa. Descarta la"+
+        bc = new BadConsequence("Sientes bichos bajo la ropa. Descarta la "+
         "armadura visible", 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)),
         new ArrayList());
         p = new Prize(1,1);
