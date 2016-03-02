@@ -40,6 +40,31 @@ public class PruebaNapakalaki {
         }*/
         
         /*Su buen rollo implique una ganancia de niveles superior a 1*/
+        /*for(Monster monstruo : monstruos) {
+           Prize p = monstruo.getPrize();
+           if(p.getLevel() >=1)
+               System.out.println(monstruo.toString()); 
+        }*/
+        /*Su mal rollo suponga la pérdida de un determinado tipo de tesoros
+         ya sea visibles y/o ocultos*/
+        for(Monster monstruo : monstruos) {
+            BadConsequence bc = monstruo.getBC();
+            ArrayList <TreasureKind> vS = bc.getSpecificVisibleTreasures();
+            ArrayList <TreasureKind> hS = bc.getSpecificHiddenTreasures();
+            
+            if(vS != null && vS.size() != 0){
+                for(TreasureKind t : vS){
+                    if(t == TreasureKind.ARMOR)
+                        System.out.println(monstruo.toString());
+                }
+            }
+            if(hS != null && hS.size() != 0){
+                for(TreasureKind t : hS){
+                    if(t == TreasureKind.ARMOR)
+                        System.out.println(monstruo.toString());
+                    }
+                }
+            } 
     }
     
 }
