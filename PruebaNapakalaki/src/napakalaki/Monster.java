@@ -29,13 +29,21 @@ public class Monster {
     public int getCombatLevel() {
         return combatLevel;
     }
+    
+    public Prize getPrize() {
+        return prize;
+    }
+    
+    public BadConsequence getBC() {
+        return badconsequence;
+    }
     //toString
     @Override
     public String toString(){
-        return "CARTA DE MONSTRUO" 
-                + "\tNombre = " + name
-                + "\tNivel de combate"+ Integer.toString(combatLevel)
-                + "\tPREMIO: " + prize.toString()
-                + "\tMAL ROLLO" + badconsequence.toString();
+        return "\nCARTA DE MONSTRUO" 
+                + "\nNombre: " + name
+                + "\nNivel de combate: "+ Integer.toString(combatLevel)
+                + "\nPremio: " + prize.toString()
+                + "\nMal rollo: " + badconsequence.toString();
     }
 }

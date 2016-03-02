@@ -43,11 +43,11 @@ public class BadConsequence {
         this.levels = levels;
         nVisibleTreasures = 0;
         nHiddenTreasures = 0;
-        for (int i=0; i<tVisible.size(); i++){
-           specificVisibleTreasures.set(i, tVisible.get(i));
+        for (TreasureKind t : tVisible){
+           specificVisibleTreasures.add(t);
         }
-        for (int i=0; i<tHidden.size(); i++){
-           specificHiddenTreasures.set(i, tHidden.get(i));
+        for (TreasureKind t : tHidden){
+           specificHiddenTreasures.add(t);
         }
     }
     
@@ -66,16 +66,50 @@ public class BadConsequence {
     public int getnHiddenTreasures() {
         return nHiddenTreasures;
     }
+
+    public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
+        return specificHiddenTreasures;
+    }
+
+    public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
+        return specificVisibleTreasures;
+    }
+    
+    public String getStringTreasures(ArrayList <TreasureKind> treasure){
+        String s = "";
+        for(TreasureKind t :treasure){
+            if(t == TreasureKind.ARMOR)
+                s += "\t-Armadura.\n";
+            else if(t == TreasureKind.BOTHHANDS)
+                s += "\t-Dos manos.\n";
+            else if(t == TreasureKind.HELMET)
+                s += "\t-Casco.\n";
+            else if(t == TreasureKind.ONEHAND)
+                s += "\t-Mano.\n";
+            else if(t == TreasureKind.SHOES)
+                s += "\t-Calzado\n";
+           }
+        return s;
+    }
     
     //toString
     @Override
     public String toString(){
-        return text + "\nNiveles = " + Integer.toString(levels)
-                    + "Tesoros visibles = " + Integer.toString(nVisibleTreasures)
-                    + "Tesoros ocultos = " + Integer.toString(nHiddenTreasures)
-                    + "Tesoros visibles específicos " 
-                    + specificVisibleTreasures.toString()
-                    + "Tesoros ocultos específicos " 
-                    + specificHiddenTreasures.toString();
+        String texto = text + "\nNiveles = " + Integer.toString(levels)
+                    + "\nTesoros visibles = " + Integer.toString(nVisibleTreasures)
+                    + "\nTesoros ocultos = " + Integer.toString(nHiddenTreasures);
+                    
+        if(specificVisibleTreasures != null
+            && specificVisibleTreasures.size() != 0){
+            text += "\nTesoros visibles específicos: \n" 
+                 + getStringTreasures(specificVisibleTreasures);
+        }
+        if(specificHiddenTreasures != null 
+           && specificHiddenTreasures.size() != 0){
+            text += "\nTesoros ocultos específicos \n" 
+                    + getStringTreasures(specificHiddenTreasures);
+        }
+        
+        return texto;
     }
 }
