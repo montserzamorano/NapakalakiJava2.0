@@ -35,6 +35,10 @@ public class Cards {
         monsters.add(new Monster("Chibithulhu",2,bc,p));
         
         /*El sopor de Dunwich*/
+        bc = new BadConsequence("El primordial bostezo contagioso. Pierdes el "+
+        "calzado visible.",0, new ArrayList(Arrays.asList(TreasureKind.SHOES)),
+        new ArrayList());
+        p = new Prize(1,1);
         monsters.add(new Monster("El sopor de Dunwich",2,bc,p));
         
         /*Angeles de la noche ibicenca*/
@@ -118,12 +122,24 @@ public class Cards {
         monsters.add(new Monster("Roboggoth",8,bc,p));
         
         /*El espia*/
+        bc = new BadConsequence("Te asusta en la noche. Pierdes un casco visible.",
+        0, new ArrayList(Arrays.asList(TreasureKind.HELMET)),
+        new ArrayList());
+        p = new Prize(1,1);
         monsters.add(new Monster("El espia",5,bc,p));
         
         /*El lenguas*/
+        bc = new BadConsequence("Menudo susto te llevas. Pierdes 2 niveles" + 
+        " y 5 tesoros visibles.",2,5,0);
+        p = new Prize(1,1);
         monsters.add(new Monster("El lenguas",20,bc,p));
         
         /*Bicefalo*/
+        bc = new BadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 "+
+                "niveles y tus tesoros visibles de las manos.",
+        0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND,TreasureKind.ONEHAND,
+        TreasureKind.BOTHHANDS)),new ArrayList());
+        p = new Prize(1,1);
         monsters.add(new Monster("Bicefalo",20,bc,p));
         
         return monsters;
