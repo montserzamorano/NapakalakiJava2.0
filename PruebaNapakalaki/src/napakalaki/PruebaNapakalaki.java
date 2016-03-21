@@ -48,7 +48,7 @@ public class PruebaNapakalaki {
         /*Su mal rollo suponga la pérdida de un determinado tipo de tesoros
          ya sea visibles y/o ocultos*/
         for(Monster monstruo : monstruos) {
-            BadConsequence bc = monstruo.getBC();
+            BadConsequence bc = monstruo.getBadConsequence();
             ArrayList <TreasureKind> vS = bc.getSpecificVisibleTreasures();
             ArrayList <TreasureKind> hS = bc.getSpecificHiddenTreasures();
             
