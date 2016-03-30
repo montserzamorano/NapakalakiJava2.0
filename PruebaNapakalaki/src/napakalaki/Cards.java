@@ -144,4 +144,42 @@ public class Cards {
         
         return monsters;
     }
+    
+    public static ArrayList <Treasure>  initializeTreasures(){
+        ArrayList <Treasure> treasures = new ArrayList();
+        treasures.add(new Treasure("¡Sí, mi amo!", 4, TreasureKind.HELMET));
+        treasures.add(new Treasure("Botas de investigación",3,TreasureKind.SHOES));
+        treasures.add(new Treasure("Capucha de Cthulhu",3, TreasureKind.HELMET));
+        treasures.add(new Treasure("A prueba de babas", 2, TreasureKind.ARMOR));
+        treasures.add(new Treasure("Botas de lluvia ácida",1,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Casco minero",2,TreasureKind.HELMET));
+        treasures.add(new Treasure("Ametralladora Thompson",4,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Camiseta de la UGR", 1, TreasureKind.ARMOR));
+        treasures.add(new Treasure("Clavo de rail ferroviario",3, TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Cuchillo de sushi arcano", 2, TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Fez alópodo", 3, TreasureKind.ARMOR));
+        treasures.add(new Treasure("Hacha prehistórica",2, TreasureKind.ONEHAND));
+        treasures.add(new Treasure("El aparato del Pr.Tesla",4,TreasureKind.ARMOR));
+        treasures.add(new Treasure("Gaita",4,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Insecticida",2,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Escopeta de 3 cañones",4, TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Garabato místico",2,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("La rebeca metálica",2,TreasureKind.ARMOR));
+        treasures.add(new Treasure("Lanzallamas",4,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Necro-comicón",1,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Necronomicón",5,TreasureKind.BOTHHANDS));        
+        treasures.add(new Treasure("Linterna a 2 manos",3,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Necro-gnomicón",2,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Necrotelecom",2,TreasureKind.HELMET));
+        treasures.add(new Treasure("Mazo de los antiguos",3,TreasureKind.ONEHAND));        
+        treasures.add(new Treasure("Necro-playboycón",3,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Porra preternatural",2,TreasureKind.ONEHAND));
+        treasures.add(new Treasure("Shogulador",1,TreasureKind.BOTHHANDS));
+        treasures.add(new Treasure("Varita de atizamiento",3,TreasureKind.ONEHAND)); 
+        treasures.add(new Treasure("Tentáculo de pega",2,TreasureKind.HELMET));
+        treasures.add(new Treasure("Zapato deja-amigos",1,TreasureKind.SHOES));         
+        
+        return treasures;
+    }
+    
 }

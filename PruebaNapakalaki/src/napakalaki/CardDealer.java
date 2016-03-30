@@ -26,7 +26,7 @@ public class CardDealer {
         return instance;
     }
     private void initTreasureCardDeck(){
-        //unusedTreasures = Cards.initializeTreasures();
+        unusedTreasures = Cards.initializeTreasures();
         shuffleTreasures();
     }
     private void initMonsterCardDeck(){
