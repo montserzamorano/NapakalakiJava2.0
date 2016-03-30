@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author Minim
  */
 public class BadConsequence {
+    static int MAXTREASURES = 10;
     private String text;
     private int levels;
     private int nVisibleTreasures;
@@ -31,9 +32,9 @@ public class BadConsequence {
     }
     public BadConsequence(String text){
         this.text = text;
-        nVisibleTreasures = 10;
-        nHiddenTreasures = 10;
-        levels = 10;
+        nVisibleTreasures = MAXTREASURES;
+        nHiddenTreasures = MAXTREASURES;
+        levels = Player.MAXLEVEL;
         specificHiddenTreasures = null;
         specificVisibleTreasures = null;
     }
@@ -48,6 +49,20 @@ public class BadConsequence {
         }
         for (TreasureKind t : tHidden){
            specificHiddenTreasures.add(t);
+        }
+    }
+    
+    public BadConsequence(BadConsequence b){
+        text = b.getText();
+        levels = b.getLevels();
+        nVisibleTreasures = b.getnVisibleTreasures();
+        nHiddenTreasures = b.getnHiddenTreasures();
+        for (TreasureKind t : b.getSpecificVisibleTreasures()){
+            specificVisibleTreasures.add(t);
+        }
+        
+        for (TreasureKind t : b.getSpecificHiddenTreasures()){
+            specificHiddenTreasures.add(t);
         }
     }
     
@@ -112,4 +127,15 @@ public class BadConsequence {
         
         return texto;
     }
+    
+    public boolean isEmpty(){
+        if(specificHiddenTreasures.isEmpty() && specificVisibleTreasures.isEmpty()
+           && nHiddenTreasures == 0 && nVisibleTreasures == 0)
+            return true;
+        else
+            return false;
+    }
+    //public void substractVisibleTreasure(Treasure t){}
+    //public void substractHiddenTreasure(Treasure t){}
+    //public BadConsequence adjustToFitTreasureLists(ArrayList <Treasure> v, ArrayList <Treasure> h){}
 }

@@ -17,8 +17,8 @@ public class PruebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList <Monster> monstruos = new ArrayList();
-        monstruos = Cards.initializeMonsters();
+        //ArrayList <Monster> monstruos = new ArrayList();
+        //monstruos = Cards.initializeMonsters();
         
         /*Monstruos que tienen nivel de combate superior a 10*/
         /*for (Monster monstruo : monstruos) {
@@ -47,7 +47,7 @@ public class PruebaNapakalaki {
         }*/
         /*Su mal rollo suponga la pérdida de un determinado tipo de tesoros
          ya sea visibles y/o ocultos*/
-        for(Monster monstruo : monstruos) {
+        /*for(Monster monstruo : monstruos) {
             BadConsequence bc = monstruo.getBadConsequence();
             ArrayList <TreasureKind> vS = bc.getSpecificVisibleTreasures();
             ArrayList <TreasureKind> hS = bc.getSpecificHiddenTreasures();
@@ -64,7 +64,8 @@ public class PruebaNapakalaki {
                         System.out.println(monstruo.toString());
                     }
                 }
-            } 
+            }*/
+        
     }
     
 }
