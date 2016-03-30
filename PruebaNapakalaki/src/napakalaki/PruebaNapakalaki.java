@@ -65,7 +65,11 @@ public class PruebaNapakalaki {
                     }
                 }
             }*/
-        
+        Dice dado = Dice.getInstance();
+        for(int i=0; i<10; i++){
+            int numero = dado.nextNumber();
+            System.out.println(numero);
+        }
     }
     
 }
