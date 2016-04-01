@@ -46,7 +46,13 @@ public class Player {
     //private void applyPrize(Monster m){}
     //private void applyBadConsequence(Monster m){}
     private int howManyVisibleTreasures(TreasureKind tKind){
-        return visibleTreasures.size();
+        int contador=0;      
+        for(Treasure v :visibleTreasures){
+            if(v.getType() == tKind){
+                contador+=1;
+            }
+        }  
+        return contador;
     }
     private void dieIfNoTreasures(){
         if(hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()){
