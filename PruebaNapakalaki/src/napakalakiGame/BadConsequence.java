@@ -1,4 +1,4 @@
-package napakalaki;
+package napakalakiGame;
 
 import java.util.ArrayList;
 
@@ -27,16 +27,12 @@ public class BadConsequence {
         this.levels = levels;
         nVisibleTreasures = nVisible;
         nHiddenTreasures = nHidden;
-        specificHiddenTreasures = null;
-        specificVisibleTreasures = null;
     }
     public BadConsequence(String text){
         this.text = text;
         nVisibleTreasures = MAXTREASURES;
         nHiddenTreasures = MAXTREASURES;
         levels = Player.MAXLEVEL;
-        specificHiddenTreasures = null;
-        specificVisibleTreasures = null;
     }
     public BadConsequence(String text, int levels, 
         ArrayList <TreasureKind> tVisible, ArrayList <TreasureKind> tHidden){
@@ -129,7 +125,7 @@ public class BadConsequence {
     }
     
     public boolean isEmpty(){
-        if(specificHiddenTreasures.isEmpty() && specificVisibleTreasures.isEmpty()
+        if(specificHiddenTreasures.size()==0 && specificVisibleTreasures.size()==0
            && nHiddenTreasures == 0 && nVisibleTreasures == 0)
             return true;
         else

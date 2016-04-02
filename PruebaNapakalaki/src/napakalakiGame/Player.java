@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package napakalakiGame;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class Player {
     private String name;
     private int level;
     private boolean dead=true;
-    private BadConsequence pendingBadConsequence;
+    private BadConsequence pendingBadConsequence= new BadConsequence("vacio",0,0,0);;
     private ArrayList <Treasure> hiddenTreasures = new ArrayList();
     private ArrayList <Treasure> visibleTreasures = new ArrayList();
     
@@ -24,13 +24,22 @@ public class Player {
         this.name=name;
     }
     public String getName(){return name;}
+    
     private void bringToLife(){
         dead=false;
         level = 1;
         hiddenTreasures.clear();
         visibleTreasures.clear();
     }
-    private int getCombatLevel(){return level;}
+    private int getCombatLevel(){
+        int combatLevel=level;
+        
+        for(Treasure v: visibleTreasures){
+            combatLevel+=v.getBonus();
+        }
+        
+        return combatLevel;
+    }
     private void incrementLevels(int l){
         level += l;
     }
@@ -56,7 +65,7 @@ public class Player {
     }
     private void dieIfNoTreasures(){
         if(hiddenTreasures.isEmpty() && visibleTreasures.isEmpty()){
-            dead = false;
+            dead = true;
         }
     }
     public boolean isDead(){

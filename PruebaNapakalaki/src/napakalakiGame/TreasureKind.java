@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package napakalakiGame;
 
 /**
  *
- * @author montse
+ * @author Minim
  */
-public enum CombatResult {
-    WINGAME, WIN, LOSE;
+public enum TreasureKind {
+    ARMOR,ONEHAND,BOTHHANDS,HELMET,SHOES;
 }
