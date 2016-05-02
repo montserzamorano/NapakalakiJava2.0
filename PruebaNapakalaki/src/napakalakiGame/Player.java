@@ -52,8 +52,28 @@ public class Player {
     private void setPendingBadConsequence(BadConsequence b){
        pendingBadConsequence = new BadConsequence(b);
     }
-    //private void applyPrize(Monster m){}
-    //private void applyBadConsequence(Monster m){}
+    private void applyPrize(Monster m){
+        int nLevels = m.getLevelsGained();
+        incrementLevels(nLevels);
+        int nTreasures = m.getTreasuresGained();
+        Treasure treasure;
+
+        CardDealer dealer;
+        dealer = CardDealer.getInstance();
+        for(int i=0; i<nTreasures; i++){
+            treasure = dealer.nextTreasure();
+            hiddenTreasures.add(treasure);
+        }
+    }
+    private void applyBadConsequence(Monster m){
+        BadConsequence badConsequence = m.getBadConsequence();
+        int nLevels = badConsequence.getLevels();
+        decrementLevels(nLevels);
+
+        BadConsequence pendingBad;
+        pendingBad = badConsequence.adjustToFitTreasureLists(visibleTreasures,hiddenTreasures);
+        setPendingBadConsequence(pendingBad);
+    }
     private int howManyVisibleTreasures(TreasureKind tKind){
         int contador=0;      
         for(Treasure v :visibleTreasures){
@@ -71,22 +91,69 @@ public class Player {
     public boolean isDead(){
         return dead;
     }
-    //public Treasure[] getHiddenTreasures(){}
-    //public Treasure[] getVisibleTreasures(){}
-    //public CombatResult combat(Monster m){}
-    //public void discardVisibleTreasure(Treasure t){}
-    //public void discardHiddenTreasure(Treasure t){}
+    public ArrayList <Treasure> getHiddenTreasures(){
+        return hiddenTreasures;
+    }
+    public ArrayList <Treasure> getVisibleTreasures(){
+        return visibleTreasures;
+    }
+    public CombatResult combat(Monster m){
+        CombatResult combat;
+        int myLevel = getCombatLevel();
+        int monsterLevel = m.getCombatLevel();
+        if(myLevel>monsterLevel){
+            applyPrize(m);
+            if(level == MAXLEVEL)
+                combat = CombatResult.WINGAME;
+            else
+                combat = CombatResult.WIN;
+        }
+        else{
+            applyBadConsequence(m);
+            combat = CombatResult.LOSE;
+        }
+        return combat;
+    }
+    public void discardVisibleTreasure(Treasure t){
+        visibleTreasures.remove(t);
+        CardDealer dealer;
+        dealer = CardDealer.getInstance();
+        dealer.giveTreasureBack(t);
+        if(pendingBadConsequence!=null && !pendingBadConsequence.isEmpty()){
+            pendingBadConsequence.substractVisibleTreasure(t);
+        }
+        dieIfNoTreasures();
+    }
+    public void discardHiddenTreasure(Treasure t){
+        hiddenTreasures.remove(t);
+        CardDealer dealer;
+        dealer = CardDealer.getInstance();
+        dealer.giveTreasureBack(t);
+        if(pendingBadConsequence!=null && !pendingBadConsequence.isEmpty()){
+            pendingBadConsequence.substractHiddenTreasure(t);
+        }
+        dieIfNoTreasures();
+    }
     public boolean validState(){
         if(pendingBadConsequence.isEmpty() && hiddenTreasures.size() <= 4)
             return true;
         else
             return false;
     }
-    public void initTreasures(){}
+    public void initTreasures(){
+    }
     public int getLevels(){
         return level;
     }
-    //public void discardAllTreasures(){}
+    public void discardAllTreasures(){
+        for(Treasure t:visibleTreasures){
+            discardVisibleTreasure(t);
+        }
+        
+        for(Treasure t:hiddenTreasures){
+            discardHiddenTreasure(t);
+        }
+    }
     public boolean canMakeTreasureVisible(Treasure t){
         boolean posible = true;
         int numManos=0;
@@ -125,5 +192,12 @@ public class Player {
             }
         }
         return posible;
+    }
+    public void makeTreasureVisible(Treasure t){
+        boolean canI = canMakeTreasureVisible(t);
+        if(canI){
+            visibleTreasures.add(t);
+            hiddenTreasures.remove(t);
+        }
     }
 }
