@@ -82,9 +82,48 @@ public class Player {
         else
             return false;
     }
-    //public void initTreasures(){}
+    public void initTreasures(){}
     public int getLevels(){
         return level;
     }
     //public void discardAllTreasures(){}
+    public boolean canMakeTreasureVisible(Treasure t){
+        boolean posible = true;
+        int numManos=0;
+        for(int i=0; i<visibleTreasures.size() && posible; i++){
+            if(t.getType() == TreasureKind.HELMET){
+                if(visibleTreasures.get(i).getType() == TreasureKind.HELMET){
+                    posible = false;
+                }
+            }
+            if(t.getType() == TreasureKind.ARMOR){
+                if(visibleTreasures.get(i).getType() == TreasureKind.ARMOR){
+                    posible = false;
+                }
+            }
+            if(t.getType() == TreasureKind.SHOES){
+                if(visibleTreasures.get(i).getType() == TreasureKind.SHOES){
+                    posible = false;
+                }
+            }
+            if(t.getType() == TreasureKind.BOTHHANDS){
+                if(visibleTreasures.get(i).getType() == TreasureKind.ONEHAND ||
+                       visibleTreasures.get(i).getType() == TreasureKind.BOTHHANDS){
+                    posible = false;
+                }
+            }
+            if(t.getType() == TreasureKind.ONEHAND){
+                if(visibleTreasures.get(i).getType() == TreasureKind.ONEHAND){
+                    numManos++;
+                    if(numManos >=2){
+                        posible = false;
+                    }
+                }
+                if(visibleTreasures.get(i).getType() == TreasureKind.BOTHHANDS){
+                    posible = false;
+                }
+            }
+        }
+        return posible;
+    }
 }
