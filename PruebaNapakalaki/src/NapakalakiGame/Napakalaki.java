@@ -1,10 +1,10 @@
-package napakalakiGame;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author Minim
+ * @author Montserrat Rodriguez Zamorano
  */
 public class Napakalaki {
     private static final Napakalaki instance = new Napakalaki();
@@ -57,12 +57,29 @@ public class Napakalaki {
         CombatResult combatResult = currentPlayer.combat(currentMonster);
         CardDealer dealer = CardDealer.getInstance();
         dealer.giveMonsterBack(currentMonster);
+        if(combatResult == CombatResult.LOSEANDCONVERT){
+            Cultist c = dealer.nextCultist();
+            CultistPlayer cultist_player = new CultistPlayer(currentPlayer,c);
+            currentPlayer = cultist_player;
+            players.set(currentPlayerIndex,cultist_player);
+            
+        }
         return combatResult;
     }
-    public void discardVisibleTreasures(ArrayList <Treasure> treasures){}
-    public void discardHiddenTreasures(ArrayList <Treasure> treasures){}
-    public void makeTreasureVisible(Treasure t){
-        currentPlayer.makeTreasureVisible(t);
+    public void discardVisibleTreasures(ArrayList <Treasure> treasures){
+        for(Treasure t: treasures){
+            currentPlayer.discardVisibleTreasure(t);
+        }
+    }
+    public void discardHiddenTreasures(ArrayList <Treasure> treasures){
+        for(Treasure t: treasures){
+            currentPlayer.discardHiddenTreasure(t);
+        }
+    }
+    public void makeTreasuresVisible(ArrayList <Treasure> treasures){
+        for(Treasure t: treasures){
+            currentPlayer.makeTreasureVisible(t);
+        }
     }
     public void initGame(ArrayList <String> players){
         initPlayers(players);

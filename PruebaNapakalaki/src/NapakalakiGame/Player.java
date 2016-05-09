@@ -3,26 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalakiGame;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author montse
+ * @author Montserrat Rodriguez Zamorano
  */
 public class Player {
     static int MAXLEVEL=10;
     private String name;
     private int level;
     private boolean dead=true;
-    private BadConsequence pendingBadConsequence= new BadConsequence("vacio",0,0,0);;
+    private BadConsequence pendingBadConsequence= new NumericBadConsequence("vacio",0,0,0);;
     private ArrayList <Treasure> hiddenTreasures = new ArrayList();
     private ArrayList <Treasure> visibleTreasures = new ArrayList();
     
     public Player(String name){
         this.name=name;
     }
+    
+    public Player(Player p){
+      this.name=p.getName();
+      this.dead=p.isDead();
+      this.level=p.getLevels();
+      this.pendingBadConsequence=p.getPendingBadConsequence();
+      this.hiddenTreasures = p.getHiddenTreasures();
+      this.visibleTreasures = p.getVisibleTreasures();
+    }
+    
     public String getName(){return name;}
     
     private void bringToLife(){
@@ -31,7 +41,7 @@ public class Player {
         hiddenTreasures.clear();
         visibleTreasures.clear();
     }
-    private int getCombatLevel(){
+    protected int getCombatLevel(){
         int combatLevel=level;
         
         for(Treasure v: visibleTreasures){
@@ -50,7 +60,7 @@ public class Player {
         }
     }
     private void setPendingBadConsequence(BadConsequence b){
-       pendingBadConsequence = new BadConsequence(b);
+       pendingBadConsequence = b;
     }
     private void applyPrize(Monster m){
         int nLevels = m.getLevelsGained();
@@ -100,7 +110,7 @@ public class Player {
     public CombatResult combat(Monster m){
         CombatResult combat;
         int myLevel = getCombatLevel();
-        int monsterLevel = m.getCombatLevel();
+        int monsterLevel = getOponentLevel(m);
         if(myLevel>monsterLevel){
             applyPrize(m);
             if(level == MAXLEVEL)
@@ -110,7 +120,10 @@ public class Player {
         }
         else{
             applyBadConsequence(m);
-            combat = CombatResult.LOSE;
+            if(shouldConvert())
+                combat = CombatResult.LOSEANDCONVERT;
+            else
+                combat = CombatResult.LOSE;
         }
         return combat;
     }
@@ -141,9 +154,28 @@ public class Player {
             return false;
     }
     public void initTreasures(){
+        CardDealer dealer;
+        dealer = CardDealer.getInstance();
+        Dice dice;
+        dice = Dice.getInstance();
+        bringToLife();
+        Treasure treasure = dealer.nextTreasure();
+        hiddenTreasures.add(treasure);
+        int number = dice.nextNumber();
+        if(number>1){
+            treasure = dealer.nextTreasure();
+            hiddenTreasures.add(treasure);
+        }
+        if(number==6){
+            treasure = dealer.nextTreasure();
+            hiddenTreasures.add(treasure);
+        }
     }
     public int getLevels(){
         return level;
+    }
+    public BadConsequence getPendingBadConsequence(){
+        return pendingBadConsequence;
     }
     public void discardAllTreasures(){
         for(Treasure t:visibleTreasures){
@@ -200,4 +232,16 @@ public class Player {
             hiddenTreasures.remove(t);
         }
     }
+    
+    
+   //CULTIST
+   //protected int getCombatLevel(){}
+   protected int getOponentLevel(Monster m){
+       return m.getCombatLevel();
+   }
+   protected boolean shouldConvert(){
+       Dice dice = Dice.getInstance();
+       return dice.nextNumber()==1;
+   }
+    
 }

@@ -1,9 +1,9 @@
-package napakalakiGame;
+package NapakalakiGame;
 import java.util.Random;
          
 /**
  *
- * @author Minim
+ * @author Montserrat Rodriguez Zamorano
  */
 public class Dice {
     private static final Dice instance = new Dice();

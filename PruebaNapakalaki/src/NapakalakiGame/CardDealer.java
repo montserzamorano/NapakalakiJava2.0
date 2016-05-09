@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package napakalakiGame;
+
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  *
- * @author montse
+ * @author Montserrat Rodriguez Zamorano
  */
 public class CardDealer {
     private static final CardDealer instance = new CardDealer();
@@ -18,6 +14,7 @@ public class CardDealer {
     private ArrayList <Treasure> usedTreasures = new ArrayList();
     private ArrayList <Monster> unusedMonsters = new ArrayList();
     private ArrayList <Monster> usedMonsters = new ArrayList();
+    private ArrayList <Cultist> unusedCultists = new ArrayList();
     
     //el constructor privado asegura que no se puede instanciar desde 
     //otras clases
@@ -33,11 +30,18 @@ public class CardDealer {
         unusedMonsters = Cards.initializeMonsters();
         shuffleMonsters();
     }
+    private void initCultistCardDeck(){
+        unusedCultists = Cards.initializeCultists();
+        shuffleCultists();
+    }  
     private void shuffleTreasures(){
         Collections.shuffle(unusedTreasures);
     }
     private void shuffleMonsters(){
         Collections.shuffle(unusedMonsters);
+    }
+    private void shuffleCultists(){
+        Collections.shuffle(unusedCultists);
     }
     public Treasure nextTreasure(){
         if(unusedTreasures.isEmpty()){
@@ -62,6 +66,11 @@ public class CardDealer {
         usedMonsters.add(m);
         return m;
     }
+    public Cultist nextCultist(){
+        Cultist c = unusedCultists.get(0);
+        unusedCultists.remove(0);
+        return c;
+    }
     public void giveTreasureBack(Treasure t){
         usedTreasures.add(t);
         unusedTreasures.remove(t);
@@ -73,5 +82,6 @@ public class CardDealer {
     public void initCards(){
         initTreasureCardDeck();
         initMonsterCardDeck();
+        initCultistCardDeck();
     }
 }
