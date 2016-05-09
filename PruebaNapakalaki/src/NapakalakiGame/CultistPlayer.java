@@ -17,13 +17,22 @@ public class CultistPlayer extends Player{
         myCultistCard = c;
         totalCultistPlayer +=1;
     }
+    
+    public static int getTotalCultistPlayer(){
+        return totalCultistPlayer;
+    }
+    
+    @Override
     protected int getOponentLevel(Monster m){
         return m.getCombatLevelAgainstCultistPlayer();
     }
     
+    @Override
     protected boolean shouldConvert(){
         return false;
     }
+    
+    @Override
     protected int getCombatLevel(){
         return (int)(1.5*super.getCombatLevel()+myCultistCard.getGainedLevels());
     }
