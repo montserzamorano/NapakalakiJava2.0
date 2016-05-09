@@ -15,4 +15,10 @@ public class Cultist {
     public int getGainedLevels(){
         return gainedLevels;
     }
+    
+    @Override
+    public String toString(){
+        return "(" + name + "," + Integer.toString(gainedLevels) + ")";
+    }
+    
 }

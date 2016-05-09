@@ -233,6 +233,11 @@ public class Player {
         }
     }
     
+   @Override
+   public String toString(){
+      String texto = getName() + " y de nivel " + Integer.toString(level) + " con nivel de combate " + Integer.toString(getCombatLevel());
+      return texto;
+   }
     
    //CULTIST
    //protected int getCombatLevel(){}

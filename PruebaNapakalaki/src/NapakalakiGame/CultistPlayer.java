@@ -36,4 +36,10 @@ public class CultistPlayer extends Player{
     protected int getCombatLevel(){
         return (int)(1.5*super.getCombatLevel()+myCultistCard.getGainedLevels());
     }
+    
+    @Override
+    public String toString(){
+        return "Jugador sectario de nombre: " + super.toString() + " \n Con carta de sectario (nombre,nivel): " + myCultistCard.toString();
+    }
+    
 }

@@ -22,4 +22,9 @@ public class Treasure {
     public String getName(){return name;}
     public int getBonus(){return bonus;}
     public TreasureKind getType(){return type;}
+    
+    @Override
+    public String toString(){
+        return "Nombre = " + name + " \n " + "Bonus = " + bonus + " \n " + " Tipo = " + type.toString();
+    }
 }
