@@ -241,7 +241,7 @@ public class Player {
    }
    protected boolean shouldConvert(){
        Dice dice = Dice.getInstance();
-       return dice.nextNumber()==1;
+       return dice.nextNumber()==6;
    }
     
 }
