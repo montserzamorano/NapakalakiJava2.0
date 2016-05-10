@@ -177,12 +177,16 @@ public class Player {
     public BadConsequence getPendingBadConsequence(){
         return pendingBadConsequence;
     }
+    
     public void discardAllTreasures(){
-        for(Treasure t:visibleTreasures){
+        ArrayList<Treasure> cVisible = (ArrayList<Treasure>)visibleTreasures.clone();
+        ArrayList<Treasure> cHidden = (ArrayList<Treasure>)hiddenTreasures.clone();
+        
+        for(Treasure t: cVisible){
             discardVisibleTreasure(t);
         }
         
-        for(Treasure t:hiddenTreasures){
+        for(Treasure t: cHidden){
             discardHiddenTreasure(t);
         }
     }

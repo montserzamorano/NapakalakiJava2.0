@@ -30,7 +30,9 @@ public class GameTester {
 
     game = aGame;
     names = getPlayerNames(numberOfPlayers);
+      
     game.initGame(names);
+    
     do { // Mientras dure la partida
       currentPlayer = game.getCurrentPlayer();
       do { // Mientras el jugador se decide a conocer al monstruo

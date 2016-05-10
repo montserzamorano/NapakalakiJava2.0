@@ -9,14 +9,19 @@ import java.util.ArrayList;
 public class Napakalaki {
     private static final Napakalaki instance = new Napakalaki();
     private static final int MAXPLAYERS = 3;
-    private int currentPlayerIndex = -1;
-    private Monster currentMonster = null;
-    private Player currentPlayer = null;
-    private ArrayList <Player> players = new ArrayList();
-    private CardDealer dealer;
+    private int currentPlayerIndex; 
+    private Monster currentMonster;
+    private Player currentPlayer;
+    private ArrayList <Player> players;
+
     //el constructor privado asegura que no se puede instanciar desde 
     //otras clases
-    private Napakalaki(){}
+    private Napakalaki(){
+        currentPlayerIndex = -1;
+        players = new ArrayList<>();
+        currentPlayer = null;
+        currentMonster = null;
+    }
     public static Napakalaki getInstance(){
         return instance;
     }
@@ -31,6 +36,10 @@ public class Napakalaki {
                 players.add(p);
             }
         } 
+    }
+    
+    public ArrayList<Player> getPlayers(){
+        return players;
     }
     
     private Player nextPlayer(){
@@ -66,16 +75,26 @@ public class Napakalaki {
             
         return combatResult;
     }
-    public void discardVisibleTreasures(ArrayList <Treasure> treasures){}
-    public void discardHiddenTreasures(ArrayList <Treasure> treasures){}
+    public void discardVisibleTreasures(ArrayList <Treasure> treasures){
+        for (Treasure t: treasures){
+            currentPlayer.discardVisibleTreasure(t);
+        }
+    }
+    
+    public void discardHiddenTreasures(ArrayList <Treasure> treasures){
+        for (Treasure t: treasures){
+            currentPlayer.discardHiddenTreasure(t);
+        }    
+    }
+    
     public void makeTreasureVisible(Treasure t){
         currentPlayer.makeTreasureVisible(t);
     }
     public void initGame(ArrayList <String> players){
-        initPlayers(players);
         CardDealer dealer = CardDealer.getInstance();
         dealer.initCards();
-        
+        initPlayers(players);
+        nextTurn();
     }
     public Player getCurrentPlayer(){
         return currentPlayer;
@@ -84,7 +103,7 @@ public class Napakalaki {
         return currentMonster;
     }
     public boolean nextTurn(){
-        boolean stateOK = false;
+        boolean stateOK = true;
         if(currentPlayer!=null){
             stateOK = nextTurnAllowed();
         }
