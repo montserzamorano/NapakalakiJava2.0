@@ -30,7 +30,7 @@ public class DeathBadConsequence extends NumericBadConsequence{
     
     @Override
     public DeathBadConsequence adjustToFitTreasureLists(ArrayList <Treasure> visible, ArrayList <Treasure> hidden){
-        return new DeathBadConsequence(super.getText());
+        return (DeathBadConsequence) super.adjustToFitTreasureLists(visible,hidden);
     }
     
     @Override

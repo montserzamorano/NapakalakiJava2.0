@@ -248,5 +248,14 @@ public class Player {
        Dice dice = Dice.getInstance();
        return dice.nextNumber()==6;
    }
+   
+   //otros
+   public void setVisibleTreasures(ArrayList <Treasure> v){
+       visibleTreasures = v;
+   }
+   
+   public void setHiddenTreasures(ArrayList <Treasure> h){
+       hiddenTreasures = h;
+   }
     
 }
