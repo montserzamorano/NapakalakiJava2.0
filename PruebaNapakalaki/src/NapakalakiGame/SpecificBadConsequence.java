@@ -12,17 +12,21 @@ import java.util.ArrayList;
  * @author montse
  */
 public class SpecificBadConsequence extends BadConsequence{
-    private ArrayList <TreasureKind> specificVisibleTreasures;
-    private ArrayList <TreasureKind> specificHiddenTreasures;
+    private ArrayList <TreasureKind> specificVisibleTreasures = new ArrayList();
+    private ArrayList <TreasureKind> specificHiddenTreasures = new ArrayList();;
     
     public SpecificBadConsequence(String text, int levels, 
       ArrayList <TreasureKind> tVisible, ArrayList <TreasureKind> tHidden){
       super(text,levels);
-      for (TreasureKind t : tVisible){
-        specificVisibleTreasures.add(t);
+      if(!tVisible.isEmpty()){
+        for (TreasureKind t : tVisible){
+            specificVisibleTreasures.add(t);
+        } 
       }
-      for (TreasureKind t : tHidden){
-        specificHiddenTreasures.add(t);
+      if(!tHidden.isEmpty()){
+        for (TreasureKind t : tHidden){
+            specificHiddenTreasures.add(t);
+        } 
       }
     }
     

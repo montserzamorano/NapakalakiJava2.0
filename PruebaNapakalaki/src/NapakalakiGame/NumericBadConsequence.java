@@ -43,7 +43,7 @@ public class NumericBadConsequence extends BadConsequence{
     }
     
     @Override
-    public NumericBadConsequence adjustToFitTreasureLists(ArrayList <Treasure> visible, ArrayList <Treasure> hidden){
+    public BadConsequence adjustToFitTreasureLists(ArrayList <Treasure> visible, ArrayList <Treasure> hidden){
         int nVisible, nHidden;
         
         if (nVisibleTreasures == 0)
