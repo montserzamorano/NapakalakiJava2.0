@@ -21,12 +21,12 @@ public class CultistPlayer extends Player{
     public static int getTotalCultistPlayer(){
         return totalCultistPlayer;
     }
-    
+    //EXAMEN
     @Override
     protected int getOponentLevel(Monster m){
-        return m.getCombatLevelAgainstCultistPlayer();
+        return m.getCombatLevelAgainstCultistPlayer(this);
     }
-    
+    //EXAMEN
     @Override
     protected boolean shouldConvert(){
         return false;

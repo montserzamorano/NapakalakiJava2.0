@@ -45,6 +45,17 @@ public class Monster {
         return combatLevel;
     }
     
+    //EXAMEN
+    public int getCombatLevel(Player aPlayer){
+        return getCombatLevel();
+    }
+    
+    public int getCombatLevelAgainstCultistPlayer(Player aPlayer){
+        return combatLevel + levelAgainstCultistPlayer;
+    }
+    
+    //EXAMEN
+    
     public int getLevelsGained(){
         return prize.getLevel();
     }

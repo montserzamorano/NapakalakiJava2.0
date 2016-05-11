@@ -244,9 +244,9 @@ public class Player {
    }
     
    //CULTIST
-   //protected int getCombatLevel(){}
+   //EXAMEN
    protected int getOponentLevel(Monster m){
-       return m.getCombatLevel();
+       return m.getCombatLevel(this);
    }
    protected boolean shouldConvert(){
        Dice dice = Dice.getInstance();
