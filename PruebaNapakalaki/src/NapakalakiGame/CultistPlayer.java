@@ -21,6 +21,11 @@ public class CultistPlayer extends Player{
     public static int getTotalCultistPlayer(){
         return totalCultistPlayer;
     }
+    
+    public String getCultistName(){
+        return myCultistCard.getName();
+    }
+    
     //EXAMEN
     @Override
     protected int getOponentLevel(Monster m){
@@ -33,7 +38,7 @@ public class CultistPlayer extends Player{
     }
     
     @Override
-    protected int getCombatLevel(){
+    public int getCombatLevel(){
         return (int)(1.5*super.getCombatLevel()+myCultistCard.getGainedLevels());
     }
     

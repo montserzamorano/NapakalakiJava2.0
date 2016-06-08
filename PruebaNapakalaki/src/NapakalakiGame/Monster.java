@@ -64,6 +64,10 @@ public class Monster {
         return prize.getTreasures();
     }
     
+    public Prize getPrize(){
+        return prize;
+    }
+    
     public BadConsequence getBadConsequence() {
         return badconsequence;
     }

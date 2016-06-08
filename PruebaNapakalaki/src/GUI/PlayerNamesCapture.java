@@ -42,7 +42,6 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabelJugador1 = new javax.swing.JLabel();
         jugador1 = new javax.swing.JTextField();
         jLabelJugador2 = new javax.swing.JLabel();
@@ -53,11 +52,12 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
         playbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel1.setText("NAPAKALAKI");
+        jLabel1.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
+        jLabel1.setText("BIENVENIDOS AL JUEGO NAPAKALAKI");
 
-        jLabel2.setText("Introducid los nombres de los jugadores");
-
+        jLabelJugador1.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
         jLabelJugador1.setText("Jugador 1:");
 
         jugador1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,10 +66,13 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
             }
         });
 
+        jLabelJugador2.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
         jLabelJugador2.setText("Jugador 2:");
 
+        jLabelJugador3.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
         jLabelJugador3.setText("Jugador 3:");
 
+        buttonCancel.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
         buttonCancel.setText("Cancelar");
         buttonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
             }
         });
 
+        playbutton.setFont(new java.awt.Font("Luminari", 0, 13)); // NOI18N
         playbutton.setText("¡¡A jugar!!");
         playbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,49 +95,46 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelJugador3)
                             .addComponent(jLabelJugador1)
-                            .addComponent(jLabel2)
                             .addComponent(jugador1)
                             .addComponent(jLabelJugador2)
                             .addComponent(jugador2)
                             .addComponent(jugador3, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(56, 56, 56)
                         .addComponent(buttonCancel)
-                        .addGap(47, 47, 47)
-                        .addComponent(playbutton)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(playbutton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel1)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jLabelJugador1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabelJugador2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelJugador3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jugador3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancel)
                     .addComponent(playbutton))
-                .addGap(16, 16, 16))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,7 +169,6 @@ public PlayerNamesCapture(JFrame parent, boolean modal) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelJugador1;
     private javax.swing.JLabel jLabelJugador2;
     private javax.swing.JLabel jLabelJugador3;

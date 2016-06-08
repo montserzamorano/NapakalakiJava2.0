@@ -54,7 +54,7 @@ public class Napakalaki {
         currentPlayer = players.get(currentPlayerIndex);
         return currentPlayer;
     }
-    private boolean nextTurnAllowed(){
+    public boolean nextTurnAllowed(){
         if(currentPlayer==null){
             return true;
         }
@@ -85,6 +85,14 @@ public class Napakalaki {
         for (Treasure t: treasures){
             currentPlayer.discardHiddenTreasure(t);
         }    
+    }
+    
+    public boolean makeTreasuresVisible(ArrayList <Treasure> ts){
+        boolean b=true;
+        for(Treasure t: ts){
+            currentPlayer.makeTreasureVisible(t);
+        }
+        return b;
     }
     
     public void makeTreasureVisible(Treasure t){

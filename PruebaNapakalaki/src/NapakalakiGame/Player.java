@@ -42,7 +42,7 @@ public class Player {
         hiddenTreasures.clear();
         visibleTreasures.clear();
     }
-    protected int getCombatLevel(){
+    public int getCombatLevel(){
         int combatLevel=level;
         
         for(Treasure v: visibleTreasures){

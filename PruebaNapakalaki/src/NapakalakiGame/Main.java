@@ -23,6 +23,6 @@ public class Main {
         Dice.createInstance(napakalakiView);
         game.initGame(names);
         napakalakiView.setNapakalaki(game);
-        //napakalakiView.showView();
+        napakalakiView.setVisible(true);
     }
 }
