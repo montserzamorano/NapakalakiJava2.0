@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DeathBadConsequence extends NumericBadConsequence{
      public DeathBadConsequence(String text){
-        super(text, Player.MAXLEVEL, MAXTREASURES, MAXTREASURES);
+        super(text, Player.MAXLEVEL, 10, 10);
     }
      
     @Override

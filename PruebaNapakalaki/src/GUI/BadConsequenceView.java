@@ -16,6 +16,9 @@ public class BadConsequenceView extends javax.swing.JPanel {
      */
     public BadConsequenceView() {
         initComponents();
+        niveles.setText("");
+        ocultos.setText("");
+        visibles.setText("");
     }
 
     public void setBadConsequence(BadConsequence b){
@@ -24,34 +27,48 @@ public class BadConsequenceView extends javax.swing.JPanel {
         niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
         
         if (badConsequenceModel.getClass() == NumericBadConsequence.class){
-             ocultos.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getnHiddenTreasures()));
-             visibles.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getnVisibleTreasures()));
+             if(((NumericBadConsequence)badConsequenceModel).getnHiddenTreasures() == 0){
+                 ocultos.setText("0");
+             }
+             else{
+                ocultos.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getnHiddenTreasures()));
+             }
+             if(((NumericBadConsequence)badConsequenceModel).getnVisibleTreasures() != 0){
+                visibles.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getnVisibleTreasures()));
+             }
+             else{
+                 visibles.setText("0");
+             }
         }
-        else{
-            ocultos.setText("0");
-            visibles.setText("0");
-        }
-        
-        if (badConsequenceModel.getClass() == SpecificBadConsequence.class){
+        else if (badConsequenceModel.getClass() == SpecificBadConsequence.class){
             String svt = "";
             
-            for (TreasureKind tk : ((SpecificBadConsequence)badConsequenceModel).getSpecificVisibleTreasures()){
-                svt += tk.toString();
+            if(((SpecificBadConsequence)badConsequenceModel).getSpecificVisibleTreasures().isEmpty()){
+                visibles.setText("empty");
+            }
+            else{
+                for (TreasureKind tk : ((SpecificBadConsequence)badConsequenceModel).getSpecificVisibleTreasures()){
+                    svt += tk.toString() + "\n";
+                }
+                visibles.setText(svt);
             }
             
-            visibles.setText(svt);
-            
-            String sht = "";
-            
-            for (TreasureKind tk : ((SpecificBadConsequence)badConsequenceModel).getSpecificHiddenTreasures()){
-                sht += tk.toString();
+            if(((SpecificBadConsequence)badConsequenceModel).getSpecificHiddenTreasures().isEmpty()){
+                ocultos.setText("empty");
             }
-             
-            ocultos.setText(sht);
+            else{
+                String sht = "";
+
+                for (TreasureKind tk : ((SpecificBadConsequence)badConsequenceModel).getSpecificHiddenTreasures()){
+                    sht += tk.toString()+ "\n";
+                }
+
+                ocultos.setText(sht);
+            }
         }
-        else{
-            visibles.setText("empty");
-            ocultos.setText("empty");
+        else if(badConsequenceModel.getClass() == DeathBadConsequence.class){
+            ocultos.setText("10");
+            visibles.setText("10");
         }
        
         repaint();
@@ -69,7 +86,6 @@ public class BadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,10 +95,6 @@ public class BadConsequenceView extends javax.swing.JPanel {
         text = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 204));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel1.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
-        jLabel1.setText("MAL ROLLO");
 
         jLabel2.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
         jLabel2.setText("Niveles");
@@ -96,10 +108,10 @@ public class BadConsequenceView extends javax.swing.JPanel {
         niveles.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
         niveles.setText("jLabel5");
 
-        visibles.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
+        visibles.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 10)); // NOI18N
         visibles.setText("jLabel5");
 
-        ocultos.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
+        ocultos.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 10)); // NOI18N
         ocultos.setText("jLabel5");
 
         text.setFont(new java.awt.Font("Luminari", 0, 10)); // NOI18N
@@ -114,27 +126,23 @@ public class BadConsequenceView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(text)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ocultos))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(niveles))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(visibles))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addComponent(visibles))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ocultos)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(niveles))
@@ -146,15 +154,14 @@ public class BadConsequenceView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(ocultos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(text)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
